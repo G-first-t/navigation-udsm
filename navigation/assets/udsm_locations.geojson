@@ -1,0 +1,1644 @@
+{
+  "type": "FeatureCollection",
+  "features": [ 
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tanzania Data Lab (D Lab)",
+        "icon": "school",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.240, -6.771]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Block B",
+        "icon": "school",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.23987, -6.77150]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Block A",
+        "icon": "town-hall",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.23959, -6.77160]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Block C",
+        "icon": "school",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.24020, -6.77140]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Stationery",
+        "icon": "grocery",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.24059, -6.77055]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Cafeteria",
+        "icon": "restaurant",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.24080, -6.77180]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "M-COICT",
+        "icon": "highway-rest-area",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.23993, -6.771719]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Mabatini",
+        "icon": "highway-rest-area",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.23954, -6.77115]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Mzizima",
+        "icon": "highway-rest-area",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.24010, -6.77115]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COICT Hostels",
+        "icon": "lodging",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.24090, -6.77230]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Hostel Block D",
+        "icon": "lodging",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21400, -6.78160]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Hostel Block C",
+        "icon": "lodging",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21355, -6.78120]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Hostel Pyramid",
+        "icon": "campsite",
+        "images":[
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21346, -6.78190]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Hostel Block A",
+        "icon": "lodging",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21340, -6.78243]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Hostel Block B",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21293, -6.78200]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Hostel Block E",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21293, -6.78200]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Magufuli Cafeteria",
+        "icon": "cafe",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.21210, -6.78080]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Playground",
+        "icon": "soccer",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.2094, -6.78120]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Swimming Pool",
+        "icon": "swimming",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20810, -6.77960]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Gym",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20710, -6.779016]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Theatre 1",
+        "icon": "marker",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20629, -6.78007]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Theatre 2",
+        "icon": "marker",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20629, -6.78034]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Geology Department",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20630, -6.78096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of Natural and Applied Science (CONAS)",
+        "icon": " college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20630, -6.78095]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Botany Department",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20550, -6.78097]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Department of Zoology and Wildlife Conservation",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.2048, -6.78109]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Old Library / Maktaba",
+        "icon": "library",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20550, -6.78019]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nkrumah hall",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20460, -6.78058]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Chemistry Department",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20420, -6.78095]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Physics Department",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20380, -6.78082]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of Humanities (COHU)",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20380, -6.78030]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of Arts and Social Sciences",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20380, -6.780]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of Social Sciences (COSS)",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20350, -6.7801]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ATB",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20360, -6.7801]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Institute of Resource Assessment",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20394, -6.77950]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Geography and Institute of Resource Assessment",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20425, -6.77965]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Administration Block",
+        "icon": "town-hall",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20350, -6.78058]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Idara ya Fizikia/ physics department",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20350, -6.78120]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Centre for Virtual Learning",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20390, -6.78110]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thieta ya Mihadhara ya Sayansi",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20450, -6.78120]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mathematics Department",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20295, -6.78129]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Computer Centre",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20287, -6.78160]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NBC bank-UDSM",
+        "icon": "bank",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20236, -6.78136]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Auxilliary Police",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20250, -6.78066]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Zoology Museum",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20190, -6.78260]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Public Parking",
+        "icon": "park",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20258, -6.78290]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Science Complex",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20155, -6.78268]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of Agricultural Sciences and Fisheries (COAF)",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20259, -6.78350]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDBS",
+        "icon": "school",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20170, -6.78050]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Business School (UDBS)",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20211, -6.78050]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NMB UDSM",
+        "icon": "bank",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20219, -6.78050]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bico Garage",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20100, -6.78010]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Creative Arts(Fine and Performing Arts)",
+        "icon": "college",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20120, -6.77959]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Library",
+        "icon": "library",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20250, -6.77860]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Confucius Institute at UDSM",
+        "icon": "college",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20145, -6.77880]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yombo Cafeteria",
+        "icon": "cafe",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20132, -6.77672]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DARUSO Office",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20260, -6.77650]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 6 Block C",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20246, -6.77585]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 6 Block B",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20241, -6.77624]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 6 Block D",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20283, -6.77619]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 6 Block A",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20283, -6.77589]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "A21",
+        "capacity": 200,
+        "college": "COET",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.206756, -6.780992]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yombo1",
+        "capacity": 300,
+        "college": "COHU",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.202540, -6.777078]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yombo2",
+        "capacity": 320,
+        "college": "COHU",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.202400, -6.777078]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yombo3",
+        "capacity": 150,
+        "college": "COHU",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.202308, -6.777078]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yombo4",
+        "capacity": 960,
+        "college": "COHU",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.201617, -6.777625]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yombo5",
+        "capacity": 960,
+        "college": "COHU",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.201617, -6.778033]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 3 Block A",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20290, -6.77730]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 3 Block B",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20310, -6.77760]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Msaud Mosque/ UDSM Masjid, Ubungo",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20470, -6.7771]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSM Chapel/ CCT & TEC CHURCH",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20496, -6.77605]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 4",
+        "icon": "lodging",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20590, -6.77640]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 5",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20679, -6.77630]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 1",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20660, -6.77780]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "University Book Shop",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20640, -6.77875]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cafeteria 1",
+        "icon": "cafe",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20705, -6.77875]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cafeteria 2",
+        "icon": "cafe",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.207470, -6.778529]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cafe Bus Stop 1",
+        "icon": "bus",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20770, -6.77770]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Contena/ Container bus stop",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20570, -6.77825]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bondeni bus stop",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20400, -6.77870]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Institute of Kiswahili",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20450, -6.77927]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Utawala Bus Stop 1",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20275, -6.78070]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Utawala Bus Stop 2",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20268, -6.78105]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "School of Education (SoED)",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20070, -6.77590]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UDSOE",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20060, -6.77860]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Department of Archaeology and heritage",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20060, -6.778]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Loan Officer",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20222, -6.777078]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Afisa Utawala",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.202253, -6.776885]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "School of Law",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.2056, -6.77985]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Public Car Parking 1",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20299, -6.78070]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "University Health Centre (UDSM Hospital)",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20676, -6.78465]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auxiliary Police Post",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20676, -6.78465]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mining Department",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20730, -6.78335]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Petroleum COET",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20769, -6.78109]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hall 3 Parking",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20319, -6.77743]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dar es Salaam Printers and Book Sellers (REDET)",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20597, -6.7805]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mlimani saccos",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20566, -6.78070]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mlimani saccos Parking",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20566, -6.78076]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Demographic Training Unit",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20540, -6.78070]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dean of Students Office (DoS)",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20215, -6.77690]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Swimming Pool Parking",
+        "icon": "marker",
+         "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.2081, -6.7801]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "COET",
+        "icon": "marker",
+        "images": [
+      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict_cafe_3.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.20708, -6.78100]
+      }
+    }
+  ]
+}
