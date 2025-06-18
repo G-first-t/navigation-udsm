@@ -7,11 +7,17 @@ import 'dart:async';
 import 'package:navigation/models/locations.dart';
 import 'package:navigation/utils/logger.dart';
 import 'dart:typed_data';
+import 'package:navigation/services/directions_service.dart';
+import 'package:navigation/constants/constant.dart';
 
 class MapBoxWidget extends StatefulWidget {
   final UdsmPlace? selectedPlace;
   final Function(MapboxMap, geo.Position?)? onMapCreated;
-  const MapBoxWidget({super.key, required this.selectedPlace,  this.onMapCreated,});
+  const MapBoxWidget({
+    super.key,
+    required this.selectedPlace,
+    this.onMapCreated,
+  });
 
   @override
   State<MapBoxWidget> createState() => _MapBoxWidgetState();
@@ -25,6 +31,10 @@ class _MapBoxWidgetState extends State<MapBoxWidget> {
   StreamSubscription<geo.Position>? _positionStreamSubscription;
   late PointAnnotationManager _pointAnnotationManager;
   late CircleAnnotationManager _circleAnnotationManager;
+
+  final DirectionsService _directionsService = DirectionsService(
+    mapboxAccessToken,
+  );
 
   @override
   void initState() {
@@ -74,7 +84,7 @@ class _MapBoxWidgetState extends State<MapBoxWidget> {
         _isLoading = false;
       });
 
-      if (_mapboxMap != null)  {
+      if (_mapboxMap != null) {
         await _mapboxMap?.setCamera(_cameraOptions!);
       }
 
@@ -118,13 +128,15 @@ class _MapBoxWidgetState extends State<MapBoxWidget> {
         );
   }
 
+  // here I will implement the route drawing functionalities
+
+  Future<void> _drawRoute() async {}
+
   //details view map zooming for selected place
 
   Future<void> _updateMapForSelectedPlace() async {
     if (!mounted) return;
-    if (widget.selectedPlace != null &&
-        _mapboxMap != null &&
-        _pointAnnotationManager != null) {
+    if (widget.selectedPlace != null && _mapboxMap != null) {
       final longitude = widget.selectedPlace!.longitude;
       final latitude = widget.selectedPlace!.latitude;
 
@@ -144,7 +156,6 @@ class _MapBoxWidgetState extends State<MapBoxWidget> {
           ),
         ),
         MapAnimationOptions(duration: 1000),
-      
       );
 
       // Add a marker image for the map
@@ -164,7 +175,7 @@ class _MapBoxWidgetState extends State<MapBoxWidget> {
       }
 
       // Add marker
-      await _pointAnnotationManager!.create(
+      await _pointAnnotationManager.create(
         PointAnnotationOptions(
           geometry: Point(coordinates: Position(longitude, latitude)),
           iconImage: 'location_marker',
