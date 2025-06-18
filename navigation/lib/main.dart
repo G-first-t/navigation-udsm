@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/pages/home_screen.dart';
-import 'package:navigation/utils/logger.dart';
+
 
 void main() {
   runApp(const MainApp());

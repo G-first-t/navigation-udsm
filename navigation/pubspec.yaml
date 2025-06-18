@@ -7,6 +7,7 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  carousel_slider: ^5.1.1
   flutter:
     sdk: flutter
   geolocator: ^14.0.1
@@ -26,5 +27,7 @@ flutter:
   assets:
     - assets/udsm_locations.geojson
     - assets/images/
+    - assets/icons/
+  
 
 
