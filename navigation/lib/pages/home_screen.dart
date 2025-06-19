@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:navigation/widgets/maps/map_widget.dart';
+import 'package:navigation/widgets/maps/mapbox_widget.dart';
 import 'package:navigation/models/locations.dart';
 import 'package:navigation/widgets/search/search_bar.dart';
 import 'package:navigation/widgets/search/search_results.dart';
 import 'package:navigation/widgets/details/location_details.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart' as geo;
+import 'package:navigation/utils/logger.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -18,6 +22,20 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
   bool isSearching = false;
   UdsmPlace? selectedPlace;
+  MapboxMap? _mapboxMap;
+  geo.Position? _currentPosition;
+  String _navigationMode = 'walking';
+  String _walkTime = 'Calculating...';
+  String _walkDistance = '';
+  String _driveTime = 'Calculating...';
+  String _driveDistance = '';
+  bool _shouldShowRoute = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPlaces();
+  }
 
   void _handleSearchFocus(bool hasFocus) {
     setState(() {
@@ -35,13 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
       isSearching = true;
       _searchController.clear();
       filteredPlaces = allPlaces;
+      _navigationMode = 'walking';
+      _shouldShowRoute = false;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _loadPlaces();
   }
 
   Future<void> _loadPlaces() async {
@@ -69,17 +83,63 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       selectedPlace = place;
       isSearching = false;
+      _shouldShowRoute = false;
     });
   }
 
-  void _handleDirections() {
-    // Implement directions logic (e.g., open navigation)
-    print('Directions to ${selectedPlace?.name}');
+  void _handleMapCreated(MapboxMap mapboxMap, geo.Position? position) {
+    setState(() {
+      _mapboxMap = mapboxMap;
+      _currentPosition = position;
+    });
+    if (selectedPlace != null && !_shouldShowRoute) {
+      mapboxMap.flyTo(
+        CameraOptions(
+          center: Point(
+            coordinates: Position(
+              selectedPlace!.longitude,
+              selectedPlace!.latitude,
+            ),
+          ),
+          zoom: 18.0,
+          pitch: 60.0,
+        ),
+        MapAnimationOptions(duration: 1000),
+      );
+    }
   }
 
-  void _handleStart() {
-    // Implement start navigation logic
-    print('Start navigation to ${selectedPlace?.name}');
+  void _handleTimesUpdated(
+    String walkTime,
+    String walkDistance,
+    String driveTime,
+    String driveDistance,
+  ) {
+    AppLogger.debug(
+      'HomeScreen: Times updated - walking=$walkTime ($walkDistance), driving=$driveTime ($driveDistance)',
+    );
+    setState(() {
+      _walkTime = walkTime;
+      _walkDistance = walkDistance;
+      _driveTime = driveTime;
+      _driveDistance = driveDistance;
+    });
+  }
+
+  void _handleModeChanged(String mode) {
+    setState(() {
+      _navigationMode = mode;
+    });
+  }
+
+  void _handleDirectionsRequested(bool showRoute) {
+    setState(() {
+      _shouldShowRoute = showRoute;
+      if (!showRoute) {
+        selectedPlace = null;
+        isSearching = false;
+      }
+    });
   }
 
   @override
@@ -95,7 +155,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Stack(
         children: [
-          MapBoxWidget(selectedPlace: selectedPlace),
+          MapBoxWidget(
+            selectedPlace: selectedPlace,
+            onMapCreated: _handleMapCreated,
+            onTimesUpdated: _handleTimesUpdated,
+            selectedTransportMode: _navigationMode,
+            onModeChanged: _handleModeChanged,
+            showDirections: _shouldShowRoute,
+          ),
           CustomSearchBar(
             controller: _searchController,
             onFocusChange: _handleSearchFocus,
@@ -113,8 +180,15 @@ class _HomeScreenState extends State<HomeScreen> {
             LocationDetails(
               place: selectedPlace!,
               onClose: _clearSelection,
-              onDirections: _handleDirections,
-              onStart: _handleStart,
+              mapboxMap: _mapboxMap,
+              currentPosition: _currentPosition,
+              walkTime: _walkTime,
+              walkDistance: _walkDistance,
+              driveTime: _driveTime,
+              driveDistance: _driveDistance,
+              onModeChanged: _handleModeChanged,
+               navigationMode: _navigationMode,
+              onDirectionsRequested: _handleDirectionsRequested,
             ),
         ],
       ),

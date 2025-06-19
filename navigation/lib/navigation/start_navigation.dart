@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/models/locations.dart';
 
-class StartNavigation extends StatelessWidget {
+class StartNavigationPanel extends StatelessWidget {
   final UdsmPlace place;
   final VoidCallback onClose;
 
-  const StartNavigation({
+  const StartNavigationPanel({
     super.key,
     required this.place,
     required this.onClose,
@@ -66,7 +66,10 @@ class StartNavigation extends StatelessWidget {
         Positioned(
           top: 16,
           right: 16,
-          child: IconButton(icon: const Icon(Icons.close), onPressed: onClose),
+          child: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: onClose,
+          ),
         ),
       ],
     );
