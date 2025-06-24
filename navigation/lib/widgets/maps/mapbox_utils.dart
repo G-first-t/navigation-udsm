@@ -7,6 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
 import 'dart:math' as math;
+import 'package:image/image.dart' as img;
 
 Future<geo.Position> initializeLocation(BuildContext context) async {
   final status = await Permission.locationWhenInUse.request();
@@ -34,14 +35,23 @@ void showError(BuildContext context, String message) {
   if (!context.mounted) return;
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 }
-
 Future<MbxImage> loadImage(String assetPath) async {
   final byteData = await rootBundle.load(assetPath);
   final Uint8List data = byteData.buffer.asUint8List();
-  const int width = 63;
-  const int height = 63;
+
+  // Decode the image to get actual dimensions
+  final decodedImage = img.decodeImage(data);
+  if (decodedImage == null) {
+    throw Exception("Failed to decode image");
+  }
+
+  final width = decodedImage.width;
+  final height = decodedImage.height;
+
   return MbxImage(width: width, height: height, data: data);
 }
+
+
 ({Point center, double zoom}) calculateBounds(
   List<dynamic> coordinates,
   geo.Position? currentPosition,

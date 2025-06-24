@@ -39,18 +39,16 @@ class _DirectionsPanelState extends State<DirectionsPanel> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
 
     return Stack(
       children: [
-        // Modified Search Bar
+        // Tappable top container (closes on tap)
         Positioned(
           top: 49,
           left: 32,
           right: 32,
           child: GestureDetector(
-            onTap: widget.onClose, // Returns to initial search bar state
+            onTap: widget.onClose,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
@@ -58,19 +56,24 @@ class _DirectionsPanelState extends State<DirectionsPanel> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
               child: Column(
                 children: [
                   Row(
-                    children: [
-                      const Icon(Icons.fiber_manual_record, size: 16, color: Colors.blue),
-                      const SizedBox(width: 8),
-                      const Expanded(
+                    children: const [
+                      Icon(
+                        Icons.fiber_manual_record,
+                        size: 16,
+                        color: Colors.blue,
+                      ),
+                      SizedBox(width: 8),
+                      Expanded(
                         child: Text(
                           'Your Location',
                           style: TextStyle(fontSize: 16),
@@ -98,7 +101,8 @@ class _DirectionsPanelState extends State<DirectionsPanel> {
             ),
           ),
         ),
-        // Bottom Container
+
+        // Bottom panel
         Positioned(
           left: 0,
           right: 0,
@@ -118,69 +122,84 @@ class _DirectionsPanelState extends State<DirectionsPanel> {
             ),
             child: Column(
               children: [
-                // Walking/Driving Buttons
+                // Walking/Driving TextButtons with underline
                 Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
                   child: Row(
                     children: [
                       Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            widget.onModeChanged?.call('walking');
-                          },
-                          icon: const Icon(Icons.directions_walk),
-                          label: Text('Walking ${widget.walkTime}'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: widget.navigationMode == 'walking' ? Colors.blue[100] : Colors.white,
-                          ),
+                        child: Column(
+                          children: [
+                            TextButton(
+                              onPressed: () =>
+                                  widget.onModeChanged?.call('walking'),
+                              child: Text(
+                                'Walking ${widget.walkTime}',
+                                style: TextStyle(
+                                  fontWeight: widget.navigationMode == 'walking'
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            if (widget.navigationMode == 'walking')
+                              Container(height: 2, color: Colors.blue),
+                          ],
                         ),
                       ),
-                      const VerticalDivider(width: 1, thickness: 1, color: Colors.grey),
                       Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            widget.onModeChanged?.call('driving');
-                          },
-                          icon: const Icon(Icons.directions_car),
-                          label: Text('Driving ${widget.driveTime}'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: widget.navigationMode == 'driving' ? Colors.blue[100] : Colors.white,
-                          ),
+                        child: Column(
+                          children: [
+                            TextButton(
+                              onPressed: () =>
+                                  widget.onModeChanged?.call('driving'),
+                              child: Text(
+                                'Driving ${widget.driveTime}',
+                                style: TextStyle(
+                                  fontWeight: widget.navigationMode == 'driving'
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            if (widget.navigationMode == 'driving')
+                              Container(height: 2, color: Colors.blue),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                // Estimated Time/Distance
-                Text(
-                  widget.navigationMode == 'walking'
-                      ? '${widget.walkTime} ${widget.walkDistance}'
-                      : '${widget.driveTime} ${widget.driveDistance}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.yellow,
-                    fontWeight: FontWeight.bold,
+
+                // Time & distance display
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    widget.navigationMode == 'walking'
+                        ? '${widget.walkTime} ${widget.walkDistance}'
+                        : '${widget.driveTime} ${widget.driveDistance}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Color(0xFFB8860B), // dark goldenrod-like yellow
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
+
                 const Spacer(),
-                // Start Button
+
+                // Start Button (unchanged)
                 ElevatedButton.icon(
                   onPressed: widget.onStart,
                   icon: const Icon(Icons.navigation),
                   label: const Text('Start'),
                 ),
+
                 const SizedBox(height: 16),
               ],
             ),
-          ),
-        ),
-        // Close Button
-        Positioned(
-          top: 16,
-          right: 16,
-          child: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: widget.onClose,
           ),
         ),
       ],

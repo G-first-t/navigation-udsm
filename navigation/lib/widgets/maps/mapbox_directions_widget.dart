@@ -8,6 +8,7 @@ import 'package:geolocator/geolocator.dart' as geo;
 import 'dart:convert';
 import 'package:navigation/utils/logger.dart';
 
+
 class MapBoxDirectionsWidget extends StatefulWidget {
   final UdsmPlace? selectedPlace;
   final geo.Position? currentPosition;

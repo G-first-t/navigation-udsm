@@ -43,3 +43,7 @@ android {
 flutter {
     source = "../.."
 }
+dependencies {
+    implementation("com.mapbox.navigationcore:android:3.10.0")  // Adds core Navigation SDK functionality
+
+}

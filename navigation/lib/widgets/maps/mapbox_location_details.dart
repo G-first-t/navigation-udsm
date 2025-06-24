@@ -47,6 +47,10 @@ class _MapBoxLocationDetailsWidgetState
   }
 
   Future<void> _updateMapForSelectedPlace() async {
+
+     final screenWidth = MediaQuery.of(context).size.width;
+  final screenHeight = MediaQuery.of(context).size.height;
+
     AppLogger.info('updating location to selectedPlace');
     if (!mounted ||
         widget.selectedPlace == null ||
@@ -61,15 +65,18 @@ class _MapBoxLocationDetailsWidgetState
 
     await _pointAnnotationManager.deleteAll();
 
+    
     await _mapboxMap!.flyTo(
       CameraOptions(
         center: Point(coordinates: Position(longitude, latitude)),
         zoom: 18.0,
         pitch: 60.0,
-        anchor: ScreenCoordinate(
-          x: MediaQuery.of(context).size.width / 2,
-          y: 40,
-        ),
+        padding: MbxEdgeInsets(
+       bottom: screenHeight * 0.3, // Push marker up by 30% of screen height
+       top: 0,
+       left: 0,
+       right: 0,
+    ),
       ),
       MapAnimationOptions(duration: 1000),
     );
@@ -130,7 +137,6 @@ class _MapBoxLocationDetailsWidgetState
   Widget build(BuildContext context) {
     return MapWidget(
       key: const ValueKey('mapWidget'),
-      styleUri: 'mapbox://styles/mapbox/streets-v12',
       cameraOptions: _cameraOptions,
       onMapCreated: _onMapCreated,
       onStyleLoadedListener: _onStyleLoaded,

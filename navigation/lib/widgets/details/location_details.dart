@@ -17,7 +17,6 @@ class LocationDetails extends StatefulWidget {
   final String driveTime;
   final String driveDistance;
   final String navigationMode;
-  
   final Function(String)? onModeChanged;
   final Function(bool)? onDirectionsRequested;
 
@@ -46,7 +45,6 @@ class LocationDetailsState extends State<LocationDetails> {
   String? _fullScreenImage;
   ViewState _currentView = ViewState.details;
   bool _fromDirections = false;
-  
 
   void _showDirections() {
     setState(() {
@@ -54,11 +52,14 @@ class LocationDetailsState extends State<LocationDetails> {
       _fromDirections = true;
     });
     widget.onDirectionsRequested?.call(true);
+    AppLogger.info('showing directions');
   }
+
   void _showStartNavigation() {
     setState(() {
       _currentView = ViewState.start;
     });
+    AppLogger.info('showing startnavigation');
   }
 
   void _returnToPreviousView() {
@@ -75,9 +76,9 @@ class LocationDetailsState extends State<LocationDetails> {
     }
   }
 
-  
   void _changeMode(String mode) {
     widget.onModeChanged?.call(mode);
+    AppLogger.info('mode is changed to $mode');
   }
 
   @override
@@ -127,6 +128,8 @@ class LocationDetailsState extends State<LocationDetails> {
         return StartNavigationPanel(
           place: widget.place,
           onClose: _returnToPreviousView,
+          currentPosition: widget.currentPosition,
+          navigationMode: widget.navigationMode,
         );
       case ViewState.details:
       default:
@@ -137,15 +140,18 @@ class LocationDetailsState extends State<LocationDetails> {
               left: 32,
               right: 32,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
+                      color: Colors.black.withOpacity(0.08),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
@@ -182,7 +188,9 @@ class LocationDetailsState extends State<LocationDetails> {
                   ],
                 ),
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
+                  ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.only(bottom: 0),
                     physics: const BouncingScrollPhysics(),
@@ -255,7 +263,8 @@ class LocationDetailsState extends State<LocationDetails> {
           Expanded(
             flex: 2,
             child: GestureDetector(
-              onTap: () => setState(() => _fullScreenImage = widget.place.images[0]),
+              onTap: () =>
+                  setState(() => _fullScreenImage = widget.place.images[0]),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
@@ -272,7 +281,8 @@ class LocationDetailsState extends State<LocationDetails> {
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: () => setState(() => _fullScreenImage = widget.place.images[1]),
+                  onTap: () =>
+                      setState(() => _fullScreenImage = widget.place.images[1]),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
@@ -284,7 +294,8 @@ class LocationDetailsState extends State<LocationDetails> {
                 ),
                 const SizedBox(height: 8),
                 GestureDetector(
-                  onTap: () => setState(() => _fullScreenImage = widget.place.images[2]),
+                  onTap: () =>
+                      setState(() => _fullScreenImage = widget.place.images[2]),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
@@ -298,8 +309,8 @@ class LocationDetailsState extends State<LocationDetails> {
             ),
           ),
         ],
-      ));
-     
+      ),
+    );
   }
 
   Widget _buildCarouselLayout() {
