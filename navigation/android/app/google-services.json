@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "601410980453",
+    "project_id": "navigation-d6f0a",
+    "storage_bucket": "navigation-d6f0a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601410980453:android:8c69408a38d81056f0148c",
+        "android_client_info": {
+          "package_name": "com.example.navigation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtJfSdp9MF-cd8yHFEzR8AI3mfqmyabwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
