@@ -80,7 +80,7 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void goToHome(BuildContext context) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const HomeScreen()),
     );
