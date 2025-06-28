@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:navigation/auth/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:navigation/auth/login_screen.dart';
 import 'package:navigation/firebase_options.dart';
@@ -59,7 +60,7 @@ class MainApp extends StatelessWidget {
                 // Replace with your SignUp page route:
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  MaterialPageRoute(builder: (_) => const SignupScreen()),
                 );
               },
             );

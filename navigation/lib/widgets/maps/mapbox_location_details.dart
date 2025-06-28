@@ -55,8 +55,9 @@ class _MapBoxLocationDetailsWidgetState
     if (!mounted ||
         widget.selectedPlace == null ||
         _mapboxMap == null ||
-        !_isStyleLoaded)
+        !_isStyleLoaded) {
       return;
+    }
 
     final longitude = widget.selectedPlace!.longitude;
     final latitude = widget.selectedPlace!.latitude;

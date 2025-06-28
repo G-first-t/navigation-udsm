@@ -7,9 +7,9 @@
         "name": "Tanzania Data Lab (D Lab)",
         "icon": "school",
         "images": [
-      "assets/images/coict_cafe_1.jpeg",
-      "assets/images/coict_cafe_2.jpeg",
-      "assets/images/coict_cafe_3.jpeg"
+      "assets/images/udbs.jpeg",
+      "assets/images/udbs_2.jpeg",
+      "assets/images/udbs_3.jpeg"
         ]
       },
       "geometry": {
@@ -55,7 +55,7 @@
         "name": "COICT Block C",
         "icon": "school",
         "images": [
-      "assets/images/coict_cafe_1.jpeg",
+      "assets/images/block-c.jpeg",
       "assets/images/coict_cafe_2.jpeg",
       "assets/images/coict_cafe_3.jpeg"
         ]
@@ -151,8 +151,8 @@
         "name": "COICT Hostels",
         "icon": "lodging",
         "images": [
-      "assets/images/coict_cafe_1.jpeg",
-      "assets/images/coict_cafe_2.jpeg",
+      "assets/images/coict-hostel-1.jpeg",
+      "assets/images/coict-hostels-2.jpeg",
       "assets/images/coict_cafe_3.jpeg"
         ]
       },
@@ -439,9 +439,11 @@
         "name": "Nkrumah hall",
         "icon": "marker",
          "images": [
-      "assets/images/coict_cafe_1.jpeg",
-      "assets/images/coict_cafe_2.jpeg",
-      "assets/images/coict_cafe_3.jpeg"
+      "assets/images/nkrumah_hall_1.jpeg",
+      "assets/images/nkrumah_hall_2.jpeg",
+      "assets/images/nkrumah_hall_4.jpeg",
+       "assets/images/nkrumah_hall_5.jpeg",
+        "assets/images/nkrumah_3.jpeg"
         ]
       },
       "geometry": {

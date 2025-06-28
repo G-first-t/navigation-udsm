@@ -46,7 +46,9 @@ class _SignupScreenState extends State<SignupScreen> {
       final user = await _auth.createUserWithEmailAndPassword(
         _email.text.trim(),
         _password.text,
+        _fullName.text.trim(), // ✅ pass full name here
       );
+
       if (user != null) {
         log("User Signed Up: ${user.uid}");
         goToHome(context);
@@ -110,7 +112,10 @@ class _SignupScreenState extends State<SignupScreen> {
             child: SingleChildScrollView(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 60,
+                  ),
                   child: Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
@@ -217,7 +222,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           children: [
                             const Text("Or sign up with "),
                             IconButton(
-                              icon: Image.asset('assets/image/google.png', height: 24),
+                              icon: Image.asset(
+                                'assets/image/google.png',
+                                height: 24,
+                              ),
                               onPressed: _signInWithGoogle,
                             ),
                           ],

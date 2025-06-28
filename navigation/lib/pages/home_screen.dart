@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation/pages/custom_drawer.dart';
 import 'package:navigation/widgets/maps/mapbox_widget.dart';
 import 'package:navigation/models/locations.dart';
 import 'package:navigation/widgets/search/search_bar.dart';
@@ -145,6 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const Text(
           'UDSM NAVIGATOR',

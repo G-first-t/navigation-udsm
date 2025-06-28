@@ -1,116 +1,127 @@
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
-  final _auth = FirebaseAuth.instance;
-  final _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  /// Validates email format and password strength.
+  /// Validate email format
   bool _isValidEmail(String email) {
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    return emailRegex.hasMatch(email);
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
 
+  /// Validate password complexity (at least 6 characters)
   bool _isValidPassword(String password) {
-    // Password must be at least 6 characters, include uppercase, lowercase, and a number
-    final passwordRegex = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$');
-    return passwordRegex.hasMatch(password);
+    return password.length >= 6;
   }
 
-  /// Creates a new user with the given email and password.
-  /// Returns the [User] object on success, throws an exception on failure or invalid input.
+  /// Sign up user with email, password, and full name
   Future<User?> createUserWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+    String fullName,
+  ) async {
     try {
-      // Validate email and password
-      if (email.isEmpty || password.isEmpty) {
-        throw Exception('Email and password cannot be empty');
+      if (email.isEmpty || password.isEmpty || fullName.isEmpty) {
+        throw Exception('All fields are required');
       }
       if (!_isValidEmail(email)) {
         throw Exception('Invalid email format');
       }
       if (!_isValidPassword(password)) {
-        throw Exception(
-            'Password must be at least 6 characters with uppercase, lowercase, and a number');
+        throw Exception('Password must be at least 6 characters');
       }
 
       final credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      log('User created: ${credential.user?.uid}');
-      return credential.user;
+
+      User? user = credential.user;
+
+      if (user != null) {
+        await user.updateDisplayName(fullName);
+        await user.reload();
+        user = _auth.currentUser;
+
+        // Save extra user info to Firestore
+        await _firestore.collection('users').doc(user?.uid).set({
+          'uid': user?.uid,
+          'name': fullName,
+          'email': email,
+          'photoURL': null,
+        });
+
+        log('User created: ${user?.uid}');
+        return user;
+      } else {
+        throw Exception("Failed to create user");
+      }
     } catch (e) {
       log('Error creating user: $e');
       rethrow;
     }
   }
 
-  /// Logs in a user with the given email and password.
-  /// Returns the [User] object on success, throws an exception on failure or invalid input.
+  /// Login user with email and password
   Future<User?> loginUserWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     try {
-      // Validate email and password
-      if (email.isEmpty || password.isEmpty) {
-        throw Exception('Email and password cannot be empty');
-      }
-      if (!_isValidEmail(email)) {
-        throw Exception('Invalid email format');
-      }
-      if (!_isValidPassword(password)) {
-        throw Exception(
-            'Password must be at least 6 characters with uppercase, lowercase, and a number');
-      }
-
       final credential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      log('User logged in: ${credential.user?.uid}');
       return credential.user;
     } catch (e) {
-      log('Error logging in: $e');
+      log('Login error: $e');
       rethrow;
     }
   }
 
-  /// Signs in a user with Google.
-  /// Returns the [User] object on success, throws an exception on failure.
   Future<User?> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        throw Exception('Google Sign-In aborted');
-      }
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      final userCredential =
-          await _auth.signInWithCredential(credential);
-      log('User signed in with Google: ${userCredential.user?.uid}');
-      return userCredential.user;
-    } catch (e) {
-      log('Error signing in with Google: $e');
-      rethrow;
-    }
-  }
+  try {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    if (googleUser == null) return null;
 
-  /// Signs out the current user.
-  /// Throws an exception on failure.
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final userCredential = await _auth.signInWithCredential(credential);
+    final user = userCredential.user;
+
+    if (user != null) {
+      // Always update Firestore with latest Google info, not just new users
+      await _firestore.collection('users').doc(user.uid).set({
+        'uid': user.uid,
+        'name': user.displayName ?? googleUser.displayName ?? 'User',
+        'email': user.email,
+        'photoURL': user.photoURL ?? googleUser.photoUrl,
+      }, SetOptions(merge: true));
+    }
+
+    return user;
+  } catch (e) {
+    log('Google sign-in error: $e');
+    rethrow;
+  }
+}
+
+
+  /// Logout current user
   Future<void> signOut() async {
-    try {
-      await _auth.signOut();
-      await _googleSignIn.signOut();
-      log('User signed out');
-    } catch (e) {
-      log('Error signing out: $e');
-      rethrow;
+    await _auth.signOut();
+    final googleSignIn = GoogleSignIn();
+    if (await googleSignIn.isSignedIn()) {
+      await googleSignIn.signOut();
     }
   }
 }
