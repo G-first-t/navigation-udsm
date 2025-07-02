@@ -86,13 +86,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () {
-              // Placeholder
-            },
-          ),
-          ListTile(
             leading: const Icon(Icons.feedback),
             title: const Text('Help & Feedback'),
             onTap: () {

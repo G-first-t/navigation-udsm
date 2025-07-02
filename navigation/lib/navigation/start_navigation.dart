@@ -57,19 +57,21 @@ class StartNavigationState extends State<StartNavigationPanel> {
   }
 
   void _startNavigation() {
+    DateTime _lastRouteUpdate = DateTime.now().subtract(const Duration(seconds: 10));
+
     _positionStream = geo.Geolocator.getPositionStream(
       locationSettings: const geo.LocationSettings(
         accuracy: geo.LocationAccuracy.bestForNavigation,
         distanceFilter: 3,
       ),
     ).listen((position) async {
-      if (_isPaused) return;
+      if (_isPaused || mapboxMap == null) return;
 
       final userLat = position.latitude;
       final userLng = position.longitude;
       final userHeading = position.heading;
 
-      mapboxMap?.setCamera(
+      mapboxMap!.setCamera(
         CameraOptions(
           center: Point(coordinates: Position(userLng, userLat)),
           zoom: 18.0,
@@ -77,14 +79,18 @@ class StartNavigationState extends State<StartNavigationPanel> {
         ),
       );
 
-      mapboxMap?.location.updateSettings(
+      mapboxMap!.location.updateSettings(
         LocationComponentSettings(
           enabled: true,
           pulsingEnabled: true,
-          puckBearingEnabled: true,
           pulsingColor: Colors.blue.value,
         ),
       );
+
+      if (DateTime.now().difference(_lastRouteUpdate) < const Duration(seconds: 10)) {
+        return;
+      }
+      _lastRouteUpdate = DateTime.now();
 
       final updatedRoute = await _mapboxDirectionsService.getRoute(
         originLat: userLat,
@@ -95,9 +101,28 @@ class StartNavigationState extends State<StartNavigationPanel> {
       );
 
       if (updatedRoute != null) {
+        final geometry = updatedRoute['route']['geometry'];
         final steps = updatedRoute['steps'] as List<dynamic>?;
         _totalDistanceMeters = updatedRoute['distance']?.toDouble();
         _totalDurationSeconds = updatedRoute['duration']?.toDouble();
+
+        if (geometry != null) {
+          await _clearRoute();
+
+          final List<Position> coordinates = _decodePolyline(geometry);
+          final lineString = LineString(coordinates: coordinates);
+
+          final polylineAnnotationOptions = PolylineAnnotationOptions(
+            geometry: lineString,
+            lineColor: Colors.blue.value,
+            lineWidth: 5.0,
+            lineOpacity: 0.8,
+          );
+
+          await mapboxMap!.annotations.createPolylineAnnotationManager().then((manager) async {
+            await manager.create(polylineAnnotationOptions);
+          });
+        }
 
         if (steps != null) {
           for (final step in steps) {
@@ -131,69 +156,18 @@ class StartNavigationState extends State<StartNavigationPanel> {
     });
   }
 
-  Future<void> _drawRoute() async {
-    if (widget.currentPosition == null) {
-      AppLogger.error('Current position is not available');
-      return;
-    }
-
+  Future<void> _clearRoute() async {
     try {
-      final routeData = await _mapboxDirectionsService.getRoute(
-        originLat: widget.currentPosition!.latitude,
-        originLng: widget.currentPosition!.longitude,
-        destinationLat: widget.place.latitude,
-        destinationLng: widget.place.longitude,
-        profile: widget.navigationMode,
-      );
-
-      if (routeData == null || mapboxMap == null) {
-        AppLogger.error('Failed to fetch route or map not initialized');
-        return;
+      if (mapboxMap != null) {
+        await mapboxMap!.annotations.createPolylineAnnotationManager().then((manager) async {
+          await manager.deleteAll();
+          AppLogger.info('Route cleared successfully');
+        });
+      } else {
+        AppLogger.error('Map not initialized');
       }
-
-      final geometry = routeData['route']['geometry'];
-      final steps = routeData['steps'] as List<dynamic>?;
-      _totalDistanceMeters = routeData['distance']?.toDouble();
-      _totalDurationSeconds = routeData['duration']?.toDouble();
-
-      if (geometry == null || steps == null) {
-        AppLogger.error('No geometry or steps found in route data');
-        return;
-      }
-
-      for (final step in steps) {
-        final voiceList = step['voiceInstructions'] as List<dynamic>?;
-        final bannerList = step['bannerInstructions'] as List<dynamic>?;
-
-        if (voiceList != null && voiceList.isNotEmpty) {
-          _currentVoiceInstruction = voiceList.first;
-        }
-
-        if (bannerList != null && bannerList.isNotEmpty) {
-          _currentBannerInstruction = bannerList.first;
-        }
-
-        if (_currentVoiceInstruction != null && _currentBannerInstruction != null) break;
-      }
-
-      setState(() {});
-
-      final List<Position> coordinates = _decodePolyline(geometry);
-      final lineString = LineString(coordinates: coordinates);
-
-      final polylineAnnotationOptions = PolylineAnnotationOptions(
-        geometry: lineString,
-        lineColor: Colors.blue.value,
-        lineWidth: 5.0,
-        lineOpacity: 0.8,
-      );
-
-      await mapboxMap!.annotations.createPolylineAnnotationManager().then((manager) async {
-        await manager.create(polylineAnnotationOptions);
-        AppLogger.info('Route drawn successfully');
-      });
     } catch (e) {
-      AppLogger.error('Error drawing route: $e');
+      AppLogger.error('Error clearing route: $e');
     }
   }
 
@@ -225,21 +199,6 @@ class StartNavigationState extends State<StartNavigationPanel> {
       points.add(Position(lng / 1e5, lat / 1e5));
     }
     return points;
-  }
-
-  Future<void> _clearRoute() async {
-    try {
-      if (mapboxMap != null) {
-        await mapboxMap!.annotations.createPolylineAnnotationManager().then((manager) async {
-          await manager.deleteAll();
-          AppLogger.info('Route cleared successfully');
-        });
-      } else {
-        AppLogger.error('Map not initialized');
-      }
-    } catch (e) {
-      AppLogger.error('Error clearing route: $e');
-    }
   }
 
   IconData _getDirectionIcon(String? modifier) {
@@ -289,11 +248,8 @@ class StartNavigationState extends State<StartNavigationPanel> {
                 LocationComponentSettings(
                   enabled: true,
                   pulsingEnabled: true,
-                  puckBearingEnabled: true,
                 ),
               );
-
-              await _drawRoute();
             },
           ),
 

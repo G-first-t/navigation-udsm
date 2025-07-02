@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:navigation/auth/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:navigation/auth/login_screen.dart';
+
 import 'package:navigation/firebase_options.dart';
 import 'package:navigation/utils/logger.dart';
-import 'package:navigation/pages/welcome_page.dart'; // Create this file
+import 'package:navigation/pages/welcome_page.dart';
+import 'package:navigation/auth/login_screen.dart';
+import 'package:navigation/auth/register_screen.dart';
+import 'package:navigation/pages/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppLogger.info('Starting application initialization...');
+
   try {
     AppLogger.debug('Initializing Firebase...');
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     AppLogger.info('Firebase initialized successfully');
+
+    // Force show WelcomePage for demo
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstLaunch', true); // <-- Always true for demo
+
     runApp(const MainApp());
     AppLogger.info('Running the app...');
   } catch (e, stack) {
@@ -26,8 +34,9 @@ Future<void> main() async {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  Future<bool> _isFirstTime() async {
-    return true;
+  Future<bool> isFirstLaunch() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('isFirstLaunch') ?? true;
   }
 
   @override
@@ -35,7 +44,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FutureBuilder<bool>(
-        future: _isFirstTime(),
+        future: isFirstLaunch(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Scaffold(
@@ -43,29 +52,24 @@ class MainApp extends StatelessWidget {
             );
           }
 
-          final isFirstTime = snapshot.data!;
-          if (isFirstTime) {
+          final firstLaunch = snapshot.data!;
+          if (firstLaunch) {
             return WelcomePage(
-              onLogin: () async {
-                final prefs = await SharedPreferences.getInstance();
-                await prefs.setBool('welcome_seen', true);
-                Navigator.pushReplacement(
-                  context,
+              onLogin: () {
+                // Show Login Page
+                Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const LoginScreen()),
                 );
               },
-              onSignup: () async {
-                final prefs = await SharedPreferences.getInstance();
-                await prefs.setBool('welcome_seen', true);
-                // Replace with your SignUp page route:
-                Navigator.pushReplacement(
-                  context,
+              onSignup: () {
+                // Show Sign Up Page
+                Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const SignupScreen()),
                 );
               },
             );
           } else {
-            return const LoginScreen();
+            return const HomeScreen(); // fallback in real use
           }
         },
       ),

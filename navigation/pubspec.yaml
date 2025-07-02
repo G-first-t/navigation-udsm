@@ -35,7 +35,7 @@ dev_dependencies:
 
 
 flutter_launcher_icons:
-  android: "launcher_icon"
+  android: "launcher_icon" 
   image_path: "assets/image/download.png"
 
 
