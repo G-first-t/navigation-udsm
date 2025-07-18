@@ -1,1 +1,4 @@
-const String mapboxAccessToken ="pk.eyJ1IjoiZ3JlcnkiLCJhIjoiY202bWRqaW5tMGZwMjJrczRxNDhyZnY1aSJ9.EM9notAkSjXZ_G6Wo4nLGw";
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+final String mapboxAccessToken = dotenv.env['MAPBOX_ACCESS_TOKEN']!;
+

@@ -56,106 +56,6 @@ class StartNavigationState extends State<StartNavigationPanel> {
     _startNavigation();
   }
 
-  void _startNavigation() {
-    DateTime _lastRouteUpdate = DateTime.now().subtract(const Duration(seconds: 10));
-
-    _positionStream = geo.Geolocator.getPositionStream(
-      locationSettings: const geo.LocationSettings(
-        accuracy: geo.LocationAccuracy.bestForNavigation,
-        distanceFilter: 3,
-      ),
-    ).listen((position) async {
-      if (_isPaused || mapboxMap == null) return;
-
-      final userLat = position.latitude;
-      final userLng = position.longitude;
-      final userHeading = position.heading;
-
-      mapboxMap!.setCamera(
-        CameraOptions(
-          center: Point(coordinates: Position(userLng, userLat)),
-          zoom: 18.0,
-          bearing: userHeading,
-        ),
-      );
-
-      mapboxMap!.location.updateSettings(
-        LocationComponentSettings(
-          enabled: true,
-          pulsingEnabled: true,
-          pulsingColor: Colors.blue.value,
-        ),
-      );
-
-      if (DateTime.now().difference(_lastRouteUpdate) < const Duration(seconds: 10)) {
-        return;
-      }
-      _lastRouteUpdate = DateTime.now();
-
-      final updatedRoute = await _mapboxDirectionsService.getRoute(
-        originLat: userLat,
-        originLng: userLng,
-        destinationLat: widget.place.latitude,
-        destinationLng: widget.place.longitude,
-        profile: widget.navigationMode,
-      );
-
-      if (updatedRoute != null) {
-        final geometry = updatedRoute['route']['geometry'];
-        final steps = updatedRoute['steps'] as List<dynamic>?;
-        _totalDistanceMeters = updatedRoute['distance']?.toDouble();
-        _totalDurationSeconds = updatedRoute['duration']?.toDouble();
-
-        if (geometry != null) {
-          await _clearRoute();
-
-          final List<Position> coordinates = _decodePolyline(geometry);
-          final lineString = LineString(coordinates: coordinates);
-
-          final polylineAnnotationOptions = PolylineAnnotationOptions(
-            geometry: lineString,
-            lineColor: Colors.blue.value,
-            lineWidth: 5.0,
-            lineOpacity: 0.8,
-          );
-
-          await mapboxMap!.annotations.createPolylineAnnotationManager().then((manager) async {
-            await manager.create(polylineAnnotationOptions);
-          });
-        }
-
-        if (steps != null) {
-          for (final step in steps) {
-            final voiceList = step['voiceInstructions'] as List<dynamic>?;
-            final bannerList = step['bannerInstructions'] as List<dynamic>?;
-
-            if (voiceList != null && voiceList.isNotEmpty) {
-              final newInstruction = voiceList.first;
-              if (_currentVoiceInstruction == null ||
-                  _currentVoiceInstruction!['announcement'] != newInstruction['announcement']) {
-                _currentVoiceInstruction = newInstruction;
-                _flutterTts.speak(newInstruction['announcement']);
-              }
-            }
-
-            if (bannerList != null && bannerList.isNotEmpty) {
-              _currentBannerInstruction = bannerList.first;
-            }
-
-            if (_currentVoiceInstruction != null && _currentBannerInstruction != null) break;
-          }
-          setState(() {});
-        }
-      }
-    });
-  }
-
-  void _togglePause() {
-    setState(() {
-      _isPaused = !_isPaused;
-    });
-  }
-
   Future<void> _clearRoute() async {
     try {
       if (mapboxMap != null) {
@@ -199,6 +99,122 @@ class StartNavigationState extends State<StartNavigationPanel> {
       points.add(Position(lng / 1e5, lat / 1e5));
     }
     return points;
+  }
+
+  void _startNavigation() {
+    geo.Position? _lastPosition;
+    DateTime _lastCameraUpdate = DateTime.now().subtract(const Duration(seconds: 2));
+    DateTime _lastRouteUpdate = DateTime.now().subtract(const Duration(seconds: 10));
+
+    _positionStream = geo.Geolocator.getPositionStream(
+      locationSettings: const geo.LocationSettings(
+        accuracy: geo.LocationAccuracy.bestForNavigation,
+        distanceFilter: 5,
+      ),
+    ).listen((position) async {
+      if (_isPaused || mapboxMap == null) return;
+
+      final userLat = position.latitude;
+      final userLng = position.longitude;
+      final userHeading = (position.heading >= 0 && position.heading < 360)
+          ? position.heading
+          : (_lastPosition?.heading ?? 0.0);
+
+      final now = DateTime.now();
+
+      if (now.difference(_lastCameraUpdate) > const Duration(seconds: 1)) {
+        mapboxMap!.easeTo(
+          CameraOptions(
+            center: Point(coordinates: Position(userLng, userLat)),
+            zoom: 18.0,
+            bearing: userHeading,
+          ),
+          MapAnimationOptions(duration: 1000),
+        );
+        _lastCameraUpdate = now;
+      }
+
+      final movedFarEnough = _lastPosition == null ||
+          geo.Geolocator.distanceBetween(
+                  _lastPosition!.latitude,
+                  _lastPosition!.longitude,
+                  userLat,
+                  userLng) >
+              20;
+
+      if (movedFarEnough &&
+          now.difference(_lastRouteUpdate) > const Duration(seconds: 10)) {
+        _lastRouteUpdate = now;
+        _lastPosition = position;
+
+        final updatedRoute = await _mapboxDirectionsService.getRoute(
+          originLat: userLat,
+          originLng: userLng,
+          destinationLat: widget.place.latitude,
+          destinationLng: widget.place.longitude,
+          profile: widget.navigationMode,
+        );
+
+        if (updatedRoute != null) {
+          final geometry = updatedRoute['route']['geometry'];
+          final steps = updatedRoute['steps'] as List<dynamic>?;
+          _totalDistanceMeters = updatedRoute['distance']?.toDouble();
+          _totalDurationSeconds = updatedRoute['duration']?.toDouble();
+
+          if (geometry != null) {
+            await _clearRoute();
+
+            final coordinates = _decodePolyline(geometry);
+            final lineString = LineString(coordinates: coordinates);
+
+            final polylineAnnotationOptions = PolylineAnnotationOptions(
+              geometry: lineString,
+              lineColor: Colors.blue.value,
+              lineWidth: 5.0,
+              lineOpacity: 0.8,
+            );
+
+            await mapboxMap!.annotations
+                .createPolylineAnnotationManager()
+                .then((manager) async {
+              await manager.create(polylineAnnotationOptions);
+            });
+          }
+
+          if (steps != null) {
+            for (final step in steps) {
+              final voiceList = step['voiceInstructions'] as List<dynamic>?;
+              final bannerList = step['bannerInstructions'] as List<dynamic>?;
+
+              if (voiceList != null && voiceList.isNotEmpty) {
+                final newInstruction = voiceList.first;
+                if (_currentVoiceInstruction == null ||
+                    _currentVoiceInstruction!['announcement'] !=
+                        newInstruction['announcement']) {
+                  _currentVoiceInstruction = newInstruction;
+                  await _flutterTts.speak(newInstruction['announcement']);
+                }
+              }
+
+              if (bannerList != null && bannerList.isNotEmpty) {
+                _currentBannerInstruction = bannerList.first;
+              }
+
+              if (_currentVoiceInstruction != null &&
+                  _currentBannerInstruction != null) break;
+            }
+
+            setState(() {});
+          }
+        }
+      }
+    });
+  }
+
+  void _togglePause() {
+    setState(() {
+      _isPaused = !_isPaused;
+    });
   }
 
   IconData _getDirectionIcon(String? modifier) {
@@ -326,25 +342,25 @@ class StartNavigationState extends State<StartNavigationPanel> {
 
           Positioned(
             bottom: 16,
-            left: 16,
-            right: 16,
+            left: 24,
+            right: 24,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 6)],
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     _formatDuration(_totalDurationSeconds),
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     _formatDistance(_totalDistanceMeters),
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   GestureDetector(
                     onTap: _togglePause,
